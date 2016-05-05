@@ -5,7 +5,7 @@ Feature: Login functionality
 
   Scenario: Login functionality with invalid authentication details
     Given username "test" password "test"
-    When user press login button
-    Then user should not be able to login
+    When user presses login button
+    Then user should be landed to home page
 
   #Scenario: Login functionality with valid authentication details

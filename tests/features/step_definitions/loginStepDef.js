@@ -15,13 +15,13 @@ var loginTest = function() {
         });
     });
 
-    this.When(/^user press login button$/, function(next) {
+    this.When(/^user presses login button$/, function(next) {
         var browser = this.browser;
 
         browser.pressButton('.login-button', next);
     });
 
-    this.Then(/^user should not be able to login$/, function(next) {
+    this.Then(/^user should be landed to home page$/, function(next) {
         var browser = this.browser;
 
         browser.assert.element('.home-cucumeber-test');
