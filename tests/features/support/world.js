@@ -1,10 +1,16 @@
-var World = function(callback) {
-	// set up code goes here
+var zombie = require('zombie');
 
-	// last line to tell cucumber.js the World is ready.
-	if (callback) {
-		callback(this);
-	}
+var World = function(callback) {
+  this.browser = new zombie();
+
+  this.visit = function(url, callback) {
+    this.browser.visit(url, callback);
+  };
+
+  // last line to tell cucumber.js the World is ready.
+  if (callback) {
+    callback(this);
+  }
 };
 
 exports.World = World;
