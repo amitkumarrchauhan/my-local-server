@@ -1,20 +1,33 @@
 var loginTest = function() {
-  this.World = require("../support/world.js").World;
+    this.World = require("../support/world.js").World;
 
-  this.Given(/^username "([^"]*)" password "([^"]*)"$/, function (username, password, next) {
-    // Write code here that turns the phrase above into concrete actions
-    next(null, 'pending');
-  });
+    this.Given(/^username "([^"]*)" password "([^"]*)"$/, function(username, password, next) {
+        var browser = this.browser;
 
-  this.When(/^user press login button$/, function (next) {
-    // Write code here that turns the phrase above into concrete actions
-    next(null, 'pending');
-  });
+        browser.visit('/', function() {
+            browser.assert.text('title', 'Local Http Server');
+            browser.assert.element('.user-name');
+            browser.assert.element('.password');
 
-  this.Then(/^user should not be able to login$/, function (next) {
-    // Write code here that turns the phrase above into concrete actions
-    callback(null, 'pending');
-  });
+            browser.fill('input.user-name', username).fill('input.password', password);
+
+            next();
+        });
+    });
+
+    this.When(/^user press login button$/, function(next) {
+        var browser = this.browser;
+
+        browser.pressButton('.login-button', next);
+    });
+
+    this.Then(/^user should not be able to login$/, function(next) {
+        var browser = this.browser;
+
+        browser.assert.element('.home-cucumeber-test');
+
+        next();
+    });
 };
 
 module.exports = loginTest;
