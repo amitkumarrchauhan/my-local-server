@@ -3,7 +3,7 @@ Feature: Login functionality
   I want to this feature to pass
 
 
-  Scenario: Login functionality with invalid authentication details
+  Scenario: Login functionality with valid authentication details
     Given username "test" password "test"
     When user presses login button
     Then user should be landed to home page
